@@ -1,6 +1,60 @@
 @import "01-vendors/normalize.css";
 @import "02-variables/fonts.scss";
 
-.test {
-    color: red;
+/* Arbitrary breakpoint values */
+$screen-sm: 481px;
+$screen-md: 769px;
+
+@mixin sm {
+    @media (max-width: #{$screen-sm}) {
+        @content;
+    }
+}
+ 
+@mixin md {
+    @media (max-width: #{$screen-md}) {
+        @content;
+    }
+}
+
+body{
+    background-color: #e4e8eb;
+    font-family: $gloriola-reg;
+}
+
+#content-wrapper {
+    background-color: #cdd3da;
+    min-height: 100vh;
+    margin: 0 128px;
+    @include md {
+        margin: 0 64px;
+    }
+    @include sm {
+        margin: 0 32px;
+    }
+    #navbar {
+        height: 64px;
+        width: 100%;
+        background-color: #0043a0;
+    }
+    #hero-container {
+        height: 480px;
+        width: 100%;
+        background-color: #2e3c49;
+    }
+    #profile-card-wrapper {
+        padding: 64px;
+        #profile-card-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 64px;
+            @include md {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @include sm {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    }
 }

@@ -32,6 +32,8 @@ async function getUsers() {
 
 window.onload = () => {
   getUsers().then((usersData) => {
-    console.log(usersData);
+    var users = usersData.users;
+    users = users.sort((a,b) => a.teamName.localeCompare(b.teamName) || a.lastName.localeCompare(b.lastName))
+    console.log(users)
   });
 }
