@@ -2,8 +2,8 @@
 @import "02-variables/fonts.scss";
 
 /* Arbitrary breakpoint values */
-$screen-sm: 481px;
-$screen-md: 769px;
+$screen-sm: 769px;
+$screen-md: 1201px;
 
 @mixin sm {
     @media (max-width: #{$screen-sm}) {
@@ -56,9 +56,10 @@ body{
             .profile {
                 background-color: #f6f7fa;
                 border-radius: 12px;
-                height: 480px;
+                height: 400px;
                 box-shadow: 0 0 10px 0px rgb(0,0,0,.25);
                 padding: 40px;
+                overflow: hidden;
                 .profile-inner {
                     position: relative;
                     display: flex;
@@ -68,19 +69,26 @@ body{
                     width: 100%;
                 }
                 .header {
-                    height: 36%;
+                    height: 32%;
                     position: relative;
                     .header-flair {
                         height: 50%;
                         background-color: #c3fef6;
                     }
-                    .thumbnail {
+                    .thumbnail-wrapper{
                         position: absolute;
-                        top: calc(10% - 5px);
+                        top: 50%;
+                        transform: translateY(-50%); /* Thumbnail will always be in center of header  */
                         left: 18px;
-                        height: 80%;
+                        max-width: calc(100% / 3);
+                        max-height: 80%;
+                        aspect-ratio: 1/1;
                         border-radius: 50%;
                         border: 5px solid white;
+                        overflow: hidden;
+                    }
+                    .thumbnail {
+                        width: 100%;
                     }
                 }
                 .profile-blurb {
